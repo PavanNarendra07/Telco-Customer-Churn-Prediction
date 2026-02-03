@@ -16,6 +16,20 @@ st.set_page_config(
 st.title("📊 Telco Customer Churn Prediction")
 st.markdown("Predict whether a customer is likely to churn.")
 
+st.markdown(
+    """
+    <style>
+    .stApp {
+        background-color: #A9A9A9;
+    }
+    .stSidebar {
+    background-color: #FFFAF0   ;
+    }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
+
 # Sidebar
 st.sidebar.header("About")
 st.sidebar.write("ML model predicts churn risk based on customer details.")
@@ -105,6 +119,7 @@ def user_input():
 
 
 submit, input_df, fields = user_input()
+
 # Fix numeric columns
 numeric_cols = ['Tenure Months', 'Monthly Charges', 'Total Charges']
 input_df[numeric_cols] = input_df[numeric_cols].apply(
@@ -137,6 +152,7 @@ if submit:
 
     st.error(f"⚠ High Churn Risk: {churn_prob:.2f}")
     st.success(f"✅ Likely to Stay: {stay_prob:.2f}")
+
 
 
 
